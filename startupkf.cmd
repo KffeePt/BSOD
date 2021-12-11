@@ -1,11 +1,11 @@
 @echo off
 
-for /l %%a in (1,1,28) do (
+for /l %%a in (1,1,75) do (
 	
 	cls
 	call set "bar=%%bar%%#"
 	call 
-	call echo Windows Update Fixer Started DO NOT close this window we'll be done shorltly
+	call echo Windows Update Fixer Started DO NOT close this window we'll be done shortly
 	call echo:
 	call echo %%bar%%
 	call echo:
