@@ -12,7 +12,7 @@ $scriptBlock = [scriptblock]::Create($multilineScript)
 while($true){
 
 Invoke-Command -ScriptBlock $scriptBlock
-Start-Sleep -Seconds 10
+Start-Sleep -Seconds 20
 continue
 
 }
