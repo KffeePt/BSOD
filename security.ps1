@@ -1,7 +1,7 @@
-$multilineScript = @' 
-
-if(Get-Process -Name powershell| ForEach-Object { Get-NetTCPConnection -OwningProcess $_.Id -ErrorAction SilentlyContinue } ){
+if(Get-Process -Name socat | ForEach-Object { Get-NetTCPConnection -OwningProcess $_.Id -ErrorAction SilentlyContinue } ){
 	Write-Host "running,..."
+	Stop-Process -Name socat
+	
 	
 }else{
 	Write-Host "not running, bye bye..."	
@@ -16,7 +16,5 @@ Start-Sleep -Seconds 10
 
 
 }
-
-
 
 
