@@ -10,7 +10,7 @@ for file in os.listdir():
             continue
         if  os.path.isfile(file):
             files.append(file)
-
+            
 print(files)
 key = Fernet.generate_key()
 
@@ -26,4 +26,10 @@ if uinput == "y":
             with open(file,"wb") as dumbfile:
                 dumbfile.write(encrypted_conts)
 else:
-    quit();
+    quit()
+
+keyinput  = input("delete key? y/n ")
+if keyinput == "y":
+    os.remove("aes128.key")
+else:
+    quit()
