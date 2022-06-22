@@ -5,10 +5,10 @@ from cryptography.fernet import Fernet
 
 files = []
 
-for file in os.dirlist():
+for file in os.listdir():
         if file == "crybaby.py" or file  == "aes128.key":
             continue
-        if  os.path.isfile():
+        if  os.path.isfile(file):
             files.append(file)
 
 print(files)
