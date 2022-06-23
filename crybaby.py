@@ -25,9 +25,7 @@ if uinput == "y":
                 encrypted_conts = Fernet(key).encrypt(conts)
             with open(file,"wb") as dumbfile:
                 dumbfile.write(encrypted_conts)
-else:
-    quit()
-
+                
 keyinput  = input("delete key? y/n ")
 if keyinput == "y":
     os.remove("aes128.key")
