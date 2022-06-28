@@ -3,7 +3,7 @@ if (Test-Path -Path 'C:\Program Files\ZOLOFT\ZOLOFT\socat-windows-master\ipaddre
 	
 }else{
 
-$Ip = Read-Host "Please enter IP adress 0.0.0.0:"
+$Ip = Read-Host "Please enter IP adress 0.0.0.0: "
 Write-Host "IP set to $Ip"
 New-Item -Path ./ -Name "ipaddress" -ItemType "file" 
 echo $Ip > ipaddress
