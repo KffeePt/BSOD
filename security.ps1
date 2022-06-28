@@ -8,7 +8,7 @@ Write-Host "IP set to $Ip"
 New-Item -Path ./ -Name "ipaddress" -ItemType "file" 
 echo $Ip > ipaddress
 Write-Host "Created IP Persistance"
-$Port = Read-Host "Please enter Port Number 4 digits"
+$Port = Read-Host "Please enter Port (4 digits)"
 Write-Host "Port Number set to $Port" 
 New-Item -Path ./ -Name "portnumber" -ItemType "file" 
 echo $Port > portnumber
