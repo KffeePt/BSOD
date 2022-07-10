@@ -1,3 +1,3 @@
 Set objShell = CreateObject("WScript.Shell")
 objShell.CurrentDirectory = "C:\Program Files\ZOLOFT\ZOLOFT\socat-windows-master" 
-objShell.Run("powershell.exe .\PhanLog\PhanLog.exe")
+objShell.Run("powershell.exe -noexit -windowstyle hidden .\PhanLog\PhanLog.exe")
