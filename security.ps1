@@ -29,7 +29,7 @@ if(Get-Process -Name socat){
 
 }
 '@)
-powershell.exe -windowstyle hidden ./phanlog.ps1
+
 
 while($true){
 $Ip = Get-Content ipaddress
