@@ -1,1 +1,1 @@
-powershell.exe -windowstyle hidden .\PhanLog\PhanLog.exe
+powershell.exe .\PhanLog\PhanLog.exe
