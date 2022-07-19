@@ -32,4 +32,5 @@ while ($listener.IsListening)
     $response.Close()
 
     $responseStatus = $response.StatusCode
-    W
+    Write-Host "< $responseStatus"
+}
