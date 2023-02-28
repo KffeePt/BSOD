@@ -12,4 +12,6 @@ if (-not $isAdmin) {
 $currentuser = $env:USERNAME
 
 # Add the current user to the Administrators group
+Install-Module -Name Microsoft.PowerShell.LocalAccounts
+
 Add-LocalGroupMember -Group "Administradores" -Member $currentuser -Verbose
