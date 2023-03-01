@@ -1,17 +1,8 @@
-# Check if the script is running with administrator privileges
-$isAdmin = ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
+# Prompt the user for their username and password using the built-in credential GUI
+$cred = Get-Credential -Message "Enter your credentials"
 
-# If not running with admin privileges, prompt the user for admin credentials and restart with admin privileges
-if (-not $isAdmin) {
-    
-    Start-Process powershell.exe -ArgumentList "-File `"$($MyInvocation.MyCommand.Path)`"" -Verb runas
-    Exit
-}
+# Display the username entered by the user
+Write-Host "Username: $($cred.UserName)"
 
-# Get the current user's username
-$currentuser = $env:USERNAME
-
-# Add the current user to the Administrators group
-Install-Module -Name Microsoft.PowerShell.LocalAccounts
-
-Add-LocalGroupMember -Group "Administradores" -Member $currentuser -Verbose
+# Display the password entered by the user (Note: This will display as "*" characters for security)
+Write-Host "Password: $($cred.GetNetworkCredential().Password)"
